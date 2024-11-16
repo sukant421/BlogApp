@@ -1,25 +1,29 @@
 steps:
-  # Step 1: Build the Docker image
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/ecstatic-valve-441717-n8/nodejs-app", "."]
+  # Step 1: Install dependencies
+  - name: "node:16"
+    entrypoint: "npm"
+    args: ["install"]
 
-  # Step 2: Push the Docker image to Google Container Registry
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/ecstatic-valve-441717-n8/nodejs-app"]
+  # # Step 2: Run tests (optional, remove if not needed)
+  # - name: "node:16"
+  #   entrypoint: "npm"
+  #   args: ["test"]
 
-  # Step 3: Deploy the container to Cloud Run
+  # Step 3: Deploy to Cloud Run using Cloud Buildpacks
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       - "run"
       - "deploy"
       - "nodejs-app"
-      - "--image"
-      - "gcr.io/ecstatic-valve-441717-n8/nodejs-app"
+      - "--source"
+      - "."
       - "--platform"
       - "managed"
       - "--region"
       - "us-central1"
       - "--allow-unauthenticated"
+      - "--project"
+      - "ecstatic-valve-441717-n8"
 
 # Set the build timeout (optional, default is 10 minutes)
 timeout: 900s
