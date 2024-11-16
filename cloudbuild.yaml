@@ -37,6 +37,9 @@ steps:
         "us-central1",
       ]
 
+options:
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
+
 # Optional: Define environment variables for your build
 substitutions:
   _REGION: "us-central1"
