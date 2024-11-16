@@ -20,7 +20,7 @@ steps:
       - "--platform"
       - "managed"
       - "--region"
-      - "asia-south1"
+      - "europe-west1"
       - "--allow-unauthenticated"
       - "--project"
       - "ecstatic-valve-441717-n8"
