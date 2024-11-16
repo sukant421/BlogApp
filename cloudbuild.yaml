@@ -1,0 +1,25 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/ecstatic-valve-441717-n8/nodejs-app", "."]
+
+  # Step 2: Push the Docker image to Google Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/ecstatic-valve-441717-n8/nodejs-app"]
+
+  # Step 3: Deploy the container to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "nodejs-app"
+      - "--image"
+      - "gcr.io/ecstatic-valve-441717-n8/nodejs-app"
+      - "--platform"
+      - "managed"
+      - "--region"
+      - "us-central1"
+      - "--allow-unauthenticated"
+
+# Set the build timeout (optional, default is 10 minutes)
+timeout: 900s
