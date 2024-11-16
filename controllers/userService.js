@@ -60,7 +60,8 @@ exports.validateJwt = async (req, res, next) => {
     if (verified) {
       return next();
     } else {
-      return false;
+      res.status(403);
+      res.send({ message: "Token not available or Token expired" });
     }
   } catch (e) {
     res.send(e);
