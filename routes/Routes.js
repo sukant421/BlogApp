@@ -4,7 +4,7 @@ const useController = require("../controllers/GetJson");
 const userController = require("../controllers/userService");
 const feedController = require("../controllers/FeedController");
 
-router.get("/health-check", useController.getJson);
+router.get("/health-check", useController.healthCheck);
 router.post("/register-user", userController.registerUser);
 router.post("/login", userController.login);
 router.get("/get-feed", userController.validateJwt, feedController.getFeed);
