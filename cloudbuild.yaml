@@ -25,5 +25,9 @@ steps:
       - "--project"
       - "ecstatic-valve-441717-n8"
 
+# Enable Cloud Logging only for the build logs
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 # Set the build timeout (optional, default is 10 minutes)
 timeout: 900s
