@@ -30,4 +30,4 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 # Set the build timeout (optional, default is 10 minutes)
-timeout: 900s
+timeout: 100s
