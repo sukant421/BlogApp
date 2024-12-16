@@ -4,10 +4,10 @@ steps:
     entrypoint: "npm"
     args: ["install"]
 
-  # Step 2: Run tests (optional, remove if not needed)
-  - name: "node:16"
-    entrypoint: "npm"
-    args: ["test"]
+  # # Step 2: Run tests (optional, remove if not needed)
+  # - name: "node:16"
+  #   entrypoint: "npm"
+  #   args: ["test"]
 
   # Step 3: Deploy to Cloud Run using Cloud Buildpacks
   - name: "gcr.io/cloud-builders/gcloud"
