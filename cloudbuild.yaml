@@ -4,7 +4,7 @@ steps:
     entrypoint: "npm"
     args: ["install"]
   
-  -name: "node:16"
+  - name: "node:16"
     args: ["run", "create-env"]
     env:
     - 'PORT=${_PORT}'
