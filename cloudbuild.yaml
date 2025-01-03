@@ -6,6 +6,7 @@ steps:
   
   # Step 2: Create environment file or setup env variables
   - name: "node:16"
+    entrypoint: "npm"
     args: ["run", "create-env"]
     env:
       - "PORT=${_PORT}"
