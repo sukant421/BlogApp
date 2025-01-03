@@ -3,6 +3,13 @@ steps:
   - name: "node:16"
     entrypoint: "npm"
     args: ["install"]
+  
+  -name: "node:16"
+    args: ["run", "create-env"]
+    env:
+    - 'PORT=${_PORT}'
+    - 'JWT_SECRET_KEY'=${_JWT_SECRET_KEY}
+    - 'TOKEN_HEADER_KEY'=${_TOKEN_HEADER_KEY}
 
   # # Step 2: Run tests (optional, remove if not needed)
   # - name: "node:16"
