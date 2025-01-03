@@ -8,5 +8,6 @@ router.get("/health-check", useController.healthCheck);
 router.post("/register-user", userController.registerUser);
 router.post("/login", userController.login);
 router.get("/get-feed", userController.validateJwt, feedController.getFeed);
+router.get("/get-feed-open", feedController.getFeed);
 
 module.exports = router;
