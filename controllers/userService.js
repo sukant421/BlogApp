@@ -12,7 +12,7 @@ exports.registerUser = (req, res) => {
 };
 
 const generateJwt = async (data) => {
-  let jwtSecretKey = process.env._JWT_SECRET_KEY;
+  let jwtSecretKey = process.env.JWT_SECRET_KEY;
   const token = jwt.sign(data, jwtSecretKey, { expiresIn: "2h" });
   return token;
 };
@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
 
 exports.validateJwt = async (req, res, next) => {
   try {
-    let jwtSecretKey = process.env._JWT_SECRET_KEY;
+    let jwtSecretKey = process.env.JWT_SECRET_KEY;
 
     const token = req.headers.token;
     const verified = jwt.verify(token, jwtSecretKey);
