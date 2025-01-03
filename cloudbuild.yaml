@@ -4,19 +4,21 @@ steps:
     entrypoint: "npm"
     args: ["install"]
   
+  # Step 2: Create environment file or setup env variables
   - name: "node:16"
     args: ["run", "create-env"]
     env:
-    - 'PORT=${_PORT}'
-    - 'JWT_SECRET_KEY'=${_JWT_SECRET_KEY}
-    - 'TOKEN_HEADER_KEY'=${_TOKEN_HEADER_KEY}
+      - "PORT=${_PORT}"
+      - "JWT_SECRET_KEY=${_JWT_SECRET_KEY}"
+      - "TOKEN_HEADER_KEY=${_TOKEN_HEADER_KEY}"
 
-  # # Step 2: Run tests (optional, remove if not needed)
+  # Step 3: Run tests (optional)
+  # Uncomment the following lines if you want to run tests
   # - name: "node:16"
   #   entrypoint: "npm"
   #   args: ["test"]
 
-  # Step 3: Deploy to Cloud Run using Cloud Buildpacks
+  # Step 4: Deploy to Cloud Run using Cloud Buildpacks
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       - "run"
